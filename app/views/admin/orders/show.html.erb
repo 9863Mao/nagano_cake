@@ -1,0 +1,15 @@
+<h3>注文履歴詳細</h3>
+
+<label>購入者</label>
+<%= @order.name %>
+<label>注文日</label>
+<%= @order.created_at %>
+<label>配送先</label>
+<%= @order.address %>
+<label>支払方法</label>
+<%= @order.payment_method %>
+<label>注文ステータス</label>
+<%= @order.status %>
+
+<%= @order.each do |order| %>
+<% end %>
