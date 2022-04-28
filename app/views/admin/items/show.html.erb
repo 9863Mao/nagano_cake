@@ -1,8 +1,8 @@
 <h4>商品詳細</h4>
 <% if @item.image.attached? %>
-  <%= image_tag @item.image, size: "100,100" %>
+  <%= image_tag @item.image, size: '200x200' %>
 <% else %>
-  <%= image_tag 'no_image', size: "200,200" %>
+  <%= image_tag 'no_image', size: '200,200' %>
 <% end %>
   <h6>商品名</h6>
   <%= @item.name %>

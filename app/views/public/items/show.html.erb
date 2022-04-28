@@ -1,2 +1,20 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+
+
+<%= image_tag @item.image, size: '200x200' %>
+<%= @item.name %>
+<%= @item.introduction %>
+
+<p><b>￥<%= @item.add_tax_price.to_s(:delimited) %></b>(税込)</p>
+
+<% if @item.is_active? %>
+  <p>販売中</p>
+<% else %>
+  <p>販売停止中</p>
+<% end %>
+
+<%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f|%>
+
+<%= f.select :amount, *[1..99] %>
+<%= f.submit "カートに入れる" %>
+
+<% end %>

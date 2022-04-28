@@ -26,7 +26,7 @@
                 <%= link_to "マイページ", public_customers_my_page_path(current_customer) %>
               </li>
               <li>
-                <%= link_to "商品一覧", public_items_index_path %>
+                <%= link_to "商品一覧", public_items_path %>
               </li>
               <li>
                 <p>カート</p>
@@ -37,7 +37,7 @@
               <% else %>
                 <% if admin_signed_in? %>
                   <li>
-                    <%= link_to "商品一覧", admin_items_path %>   
+                    <%= link_to "商品一覧", admin_items_path %>
                   </li>
                   <li>
                     <%= link_to "会員一覧", admin_customers_path %>
@@ -56,7 +56,7 @@
                     <%= link_to "About", public_homes_about_path %>
                   </li>
                   <li>
-                    <%= link_to "商品一覧", public_items_index_path %>
+                    <%= link_to "商品一覧", public_items_path %>
                   </li>
                   <li>
                     <%= link_to "新規登録", new_customer_registration_path %>

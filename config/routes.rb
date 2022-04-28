@@ -1,20 +1,17 @@
 Rails.application.routes.draw do
 
   namespace :public do
-    get 'address/index'
-    get 'address/edit'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
     get 'homes/top'
     get 'homes/about'
-    patch 'customers/unsubscribe'
-    resources :customers, only: [:edit, :update]
     get 'customers/my_page'
     get 'customers/confirm'
+    get 'customers/edit'
+    patch 'customers' => 'customers#update'
+    patch 'customers/unsubscribe'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :items, only: [:index, :show]
+
   end
 
   root to: "public/homes#top"
