@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     get 'customers/edit'
     patch 'customers' => 'customers#update'
     patch 'customers/unsubscribe'
+    delete 'cart_items/all_delete'
+    get 'orders/confirm'
+    get 'orders/complete'
+    resources :orders, only: [:new, :index, :show, :create]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :items, only: [:index, :show]
@@ -17,8 +21,8 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
 
   namespace :admin do
-    get 'orders/show'
-    get 'homes/top'
+    get '/' => 'homes#top'
+    resources :orders, only: [:show]
     resources :items, only: [:new, :index, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]

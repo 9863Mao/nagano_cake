@@ -1,20 +1,27 @@
-
-
-<%= image_tag @item.image, size: '200x200' %>
-<%= @item.name %>
-<%= @item.introduction %>
-
-<p><b>￥<%= @item.add_tax_price.to_s(:delimited) %></b>(税込)</p>
-
-<% if @item.is_active? %>
-  <p>販売中</p>
-<% else %>
-  <p>販売停止中</p>
-<% end %>
-
-<%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f|%>
-
-<%= f.select :amount, *[1..99] %>
-<%= f.submit "カートに入れる" %>
-
-<% end %>
+<div class="container lg">
+  <div class="row">
+    <div class='mx-auto'>
+      <div class='col-6'>
+        <%= image_tag @item.image, size: '300x200' %>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class='mx-auto'>
+        <%= @item.name %>
+        <%= @item.introduction %>
+        <p><b>￥<%= @item.add_tax_price.to_s(:delimited) %></b>(税込)</p>
+        <% if @item.is_active? %>
+          <p>販売中</p>
+        <% else %>
+          <p>販売停止中</p>
+        <% end %>
+        
+        <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f|%>
+          <%= f.select :amount, *[1..99], :placeholder => "個数選択"%>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.submit "カートに入れる" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

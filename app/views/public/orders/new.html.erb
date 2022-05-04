@@ -1,0 +1,46 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class='mx-auto col-12 col-sm-12 col-lg-10 col-xl-12'>
+      <h3><b>注文情報入力</b></h3>
+      <div class='col'>
+          <%= form_with model: @order, url: public_orders_confirm_path, method: :get do |f| %>
+          <div>
+             <label>支払方法</label><br>
+             <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+             <%= f.label :peyment_method, "クレジットカード" %>
+             <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+             <%= f.label :peyment_method, "銀行振込" %>
+          </div>
+          <div>
+            <div>
+              <label>お届け先</label><br>
+              <%= f.radio_button :addressa, 0 %>
+              <%= f.label :address, "ご自身の住所" %>
+              <% if customer_signed_in? %>
+                <%= current_customer.address %>
+                <%= current_customer.postal_code %>
+                <%= current_customer.first_name + current_customer.last_name %>
+              <% end %>
+            </div>
+            <div>
+              <%= f.radio_button :addressa, 1 %>
+              <%= f.label :address, "登録先住所から選択" %>
+              <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+            </div>
+            <div>
+              <%= f.radio_button :addressa, 2 %>
+              <%= f.label :address, "新しいお届け先" %><br>
+              <%= f.label :zip_code, "郵便番号(ハイフンなし)" %> 
+              <%= f.text_field :zip_code %><br>
+              <%= f.label :address, "住所" %>
+              <%= f.text_field :address %><br>
+              <%= f.label :name, "宛名" %>
+              <%= f.text_field :name %>
+            </div>
+            <%= f.submit "確認画面に進む" %>
+          </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

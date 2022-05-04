@@ -1,24 +1,42 @@
-<h2>マイページ</h2>
-
-<h6>登録情報</h6>
-<%= link_to "編集する", public_customers_edit_path %>
-
-<label>氏名</label>
-<%= current_customer.first_name %>
-<label>カナ</label>
-<%= current_customer.first_name_kana %>
-<label>郵便番号</label>
-<%= current_customer.postal_code %>
-<label>住所</label>
-<%= current_customer.address %>
-<label>電話番号</label>
-<%= current_customer.telephone_number %>
-<label>メールアドレス</label>
-<%= current_customer.email %>
-
-<h4>配送先</h4>
-<%= link_to "編集する",  public_addresses_path %>
-<h4>注文履歴</h4>
-
-
-
+<div class="container mt-2">
+  <div class="row">
+    <div class='mx-auto col-12 col-sm-12 col-lg-10 col-xl-12'>
+        <h3><b>マイページ</b></h3>
+        <div>
+          <h6><b>登録情報</b></h6>
+          <%= link_to "編集する", public_customers_edit_path, class:"btn btn-success" %>
+        </div>
+    
+        <div class='col-auto'>
+          <div>
+            <label class='col-auto'>氏名</label>
+            <%= current_customer.first_name %>
+          </div>
+          <div>
+            <label class='col-auto'>カナ</label>
+            <%= current_customer.first_name_kana %>
+          </div>
+          <div>
+            <label class='col-auto'>郵便番号</label>
+            <%= current_customer.postal_code %>
+          </div>
+          <div>
+            <label class='col-auto'>住所</label>
+            <%= current_customer.address %>
+          </div>
+          <div>
+            <label class='col-auto'>電話番号</label>
+            <%= current_customer.telephone_number %>
+          </div>
+          <div>
+            <label class='col-auto'>メールアドレス</label>
+            <%= current_customer.email %>
+          </div>
+        </div>
+        <h6><b>配送先</b></h6>
+        <%= link_to "一覧を見る",  public_addresses_path, class:"btn btn-success" %>
+        <h6><b>注文履歴</b></h6>
+        <%= link_to "一覧を見る", public_orders_path, class:"btn btn-success" %>
+    </div>
+  </div>
+</div>
