@@ -55,14 +55,14 @@
             </tr>  
           </thead>
           <tbody>
+            <% @order.order_details.each do |order_detail| %>
               <tr>
-                <% @order.order_details.each do |order_detail| %>
                 <td><%= order_detail.item.name %></td>
                 <td><%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
                 <td><%= order_detail.amount %></td>
                 <td><%= order_detail.item.add_tax_price * order_detail.amount %></td>
-                <% end %>
               </tr>
+              <% end %>
           </tbody>
         </table>
     </div>

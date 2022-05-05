@@ -2,7 +2,7 @@
   <div class="row">
     <div class='mx-auto col-12 col-sm-12 col-lg-10 col-xl-12'>
       <h4>ショッピングカート</h4>
-      <%=link_to 'カートを空にする',  public_cart_items_all_delete_path, method: :delete %>
+      <p class="text-right"><%=link_to 'カートを空にする',  public_cart_items_all_delete_path, method: :delete %></p>
         <table class='table table-hover table-inverse'>
           <thead>
               <tr>
@@ -17,7 +17,11 @@
           <tbody>
             <tr>
               <td>
+              <% if cart_item.item.image.attached? %>
                 <%= image_tag cart_item.item.image, size: '50x50' %>
+              <% else %>
+                <%= image_tag 'no_image', size: '50x50' %>
+              <% end %>
                 <%= cart_item.item.name %>  
               </td>
               <td>
@@ -37,12 +41,27 @@
               </td>
             </tr>
             <% end %>
-            <%= link_to '情報入力に進む', new_public_order_path %>
-            <%= link_to "買い物を続ける", root_path %>
+            
           </tbody>
-          
-          
         </table>
+        
+        
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-9'>
+      <%= link_to "買い物を続ける", root_path %><br>
+    </div>
+    <div class= 'col-3'>
+      
+        <table class='table table-hover table-inverse  float-right'>
+          <tr><th>合計金額</th><td><%= @sum %></td></tr>
+        </table>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='mx-auto'>
+      <p class="text-center"><%= link_to '情報入力に進む', new_public_order_path, class:"btn btn-success text-aline center" %></p>
     </div>
   </div>
 </div>

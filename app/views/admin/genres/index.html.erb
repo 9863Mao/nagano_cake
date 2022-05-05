@@ -1,7 +1,7 @@
 <div class="container mt-2">
   <div class="row">
     <div class='mx-auto col-12 col-sm-12 col-lg-10 col-xl-12'>
-      <h1>ジャンル一覧・追加</h1>
+      <h2><b>ジャンル一覧・追加</b></h2>
       <%= form_with model: @genre, url: admin_genres_path do |f| %>
         <div class="form-group">
           <h3>ジャンル名</h3>
@@ -9,11 +9,27 @@
           <%= f.submit '新規登録', class:"btn btn-success" %>
         </div>
       <% end %>
-      <h3>ジャンル</h3>
-      <% @genres.each do |genre| %>
-        <%= genre.name %>
-        <%= link_to 'edit', edit_admin_genre_path(genre.id) %>
-      <% end %>
     </div>
+  </div>
+  <div class='row'>
+    <div class='col-2'>
+      <h4><b>ジャンル一覧</b></h4>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>ジャンル名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+          <tr>
+            <td><%= genre.name %></td>
+            <td><%= link_to 'edit', edit_admin_genre_path(genre.id) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
   </div>
 </div>

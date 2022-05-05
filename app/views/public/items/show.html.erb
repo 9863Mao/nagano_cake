@@ -1,8 +1,12 @@
 <div class="container lg">
   <div class="row">
     <div class='mx-auto'>
-      <div class='col-6'>
-        <%= image_tag @item.image, size: '300x200' %>
+      <div class='col-6 mt-2'>
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, size: '200x200' %>
+      <% else %>
+        <%= image_tag 'no_image', size: '200,200' %>
+      <% end %>
       </div>
     </div>
     <div class="col-6">

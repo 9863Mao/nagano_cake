@@ -3,6 +3,22 @@
     <div class='mx-auto col-11 col-sm-10 col-lg-10 col-xl-12' >
       <p>ようこそ、ながのCAKEへ!<br>このサイトは、ケーキ販売のECサイトになります。<br>会員でない方も商品の閲覧はできますが、<br>購入には会員登録が必要になります。</p>
 
+
+      <% @items.each do |item| %>
+      <div class='col-md-3'>
+        <%= link_to public_item_path(item.id) do %>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: '150x100' %>
+          <% else %>
+            <%= image_tag 'no_image', size: '100x100' %>
+          <% end %><br>
+          <%= item.name %><br>
+        <% end %>
+        ￥<%= item.add_tax_price.to_s(:delimited) %>
+      </div>
+      <% end %>
+
+
     </div>
   </div>
 </div>
